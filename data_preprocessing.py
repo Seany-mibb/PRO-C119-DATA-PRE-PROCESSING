@@ -76,9 +76,6 @@ def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
     stem_words = sorted(list(set(stem_words)))
     classes = sorted(list(set(classes)))
 
-    pickle.dump(stem_words, open('?.pkl','wb'))
-    pickle.dump(classes, open('?.pkl','wb'))
-
     
     # print stem_words
     print('stem_words list : ' , stem_words)
@@ -140,7 +137,8 @@ def preprocess_train_data():
     stem_words, tag_classes, word_tags_list = create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words)
     
     # Convert Stem words and Classes to Python pickel file format
-    ????
+    pickle.dump(stem_words, open('words.pkl','wb'))
+    pickle.dump(classes, open('classes.pkl','wb'))
 
     train_x = bag_of_words_encoding(stem_words, word_tags_list)
     train_y = class_label_encoding(tag_classes, word_tags_list)
